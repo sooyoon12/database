@@ -1,0 +1,13 @@
+CREATE TABLE agent (agent_id INT NOT NULL AUTO_INCREMENT,agent_name CHAR(50) NOT NULL, agent_phone_number CHAR(20) NOT NULL, agent_address CHAR(100), PRIMARY KEY (agent_id));
+CREATE TABLE byer (byer_id INT NOT NULL AUTO_INCREMENT, byer_name CHAR(50) NOT NULL, byer_phone_number CHAR(20) NOT NULL, PRIMARY KEY (byer_id));
+CREATE TABLE seller (seller_id INT NOT NULL AUTO_INCREMENT, seller_name CHAR(50) NOT NULL,
+seller_phone_number CHAR(20) NOT NULL, PRIMARY KEY (seller_id));
+CREATE TABLE property (property_id INT NOT NULL AUTO_INCREMENT, property_adress CHAR(100) NOT NULL,
+property_size DOUBLE NOT NULL, property_type CHAR(50) NOT NULL, property_transaction CHAR(20) NOT NULL,
+property_bedroom INT NOT NULL, property_bathroom INT NOT NULL, property_price DOUBLE NOT NULL, property_resister_date DATE NOT NULL, school_distance_num INT, PRIMARY KEY (property_id), FOREIGN KEY (school_distance_num) REFERENCES school_distance(school_distance_num));
+CREATE TABLE school_distance (school_distance_num INT NOT NULL, education_ministry CHAR(50) NOT NULL, PRIMARY KEY (school_distance_num));
+CREATE TABLE contact (contact_id INT NOT NULL AUTO_INCREMENT, agent_id INT, seller_id INT,byer_id INT, PRIMARY KEY (contact_id), FOREIGN KEY (agent_id) REFERENCES agent(agent_id), FOREIGN KEY (seller_id) REFERENCES seller(seller_id),FOREIGN KEY (byer_id) REFERENCES byer(byer_id));
+CREATE TABLE byer_property (property_id INT, byer_id INT, PRIMARY KEY (property_id, byer_id), FOREIGN KEY (property_id) REFERENCES property(property_id), FOREIGN KEY (byer_id) REFERENCES byer(byer_id));
+CREATE TABLE recently_sold_properties ( sold_id INT NOT NULL AUTO_INCREMENT, sold_address CHAR(100) NOT NULL,  sold_price DOUBLE NOT NULL,  sold_type CHAR(50) NOT NULL, sold_transaction CHAR(20) NOT NULL,  sold_bedroom INT NOT NULL, sold_bathroom INT NOT NULL,sold_size DOUBLE NOT NULL, school_distance_num INT,sold_date DATE NOT NULL,sold_resister_date DATE NOT NULL, PRIMARY KEY (sold_id),  FOREIGN KEY (school_distance_num) REFERENCES school_distance(school_distance_num));
+CREATE TABLE property_photos (photo_id INT NOT NULL AUTO_INCREMENT, property_id INT, interior_photo BLOB,  exterior_photo BLOB, floor_plan_photo BLOB, PRIMARY KEY (photo_id), FOREIGN KEY (property_id) REFERENCES property(property_id));
+CREATE TABLE sold_photos ( photo_id INT NOT NULL AUTO_INCREMENT, sold_id INT,interior_photo BLOB, exterior_photo BLOB, floor_plan_photo BLOB, PRIMARY KEY (photo_id), FOREIGN KEY (sold_id) REFERENCES recently_sold_properties(sold_id));
