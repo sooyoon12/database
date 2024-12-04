@@ -1,25 +1,25 @@
 DELETE FROM agent;
 DELETE FROM byer;
 DELETE FROM seller;
-DELETE FROM package;
-DELETE FROM service;
-DELETE FROM delivery_timeline_service;
-DELETE FROM package_weight_service;
-DELETE FROM package_type_service;
-DELETE FROM vehicle;
-DELETE FROM customer;
-DELETE FROM shipper;
-DELETE FROM recipient;
+DELETE FROM property;
+DELETE FROM school_distance;
+DELETE FROM contract;
+DELETE FROM byer_property;
+DELETE FROM recently_sold_properties;
+DELETE FROM property_photos;
+DELETE FROM sold_photos;
 
-DROP TABLE package_shipment;
-DROP TABLE shipment;
-DROP TABLE contract;
-DROP TABLE package;
-DROP TABLE service;
-DROP TABLE delivery_timeline_service;
-DROP TABLE package_weight_service;
-DROP TABLE package_type_service;
-DROP TABLE vehicle;
-DROP TABLE customer;
-DROP TABLE shipper;
-DROP TABLE recipient;
+
+DELETE TABLE agent;
+DELETE TABLE byer;
+DELETE TABLE seller;
+DELETE TABLE property;
+DELETE TABLE school_distance;
+DELETE TABLE contract;
+DELETE TABLE byer_property;
+DELETE TABLE recently_sold_properties;
+DELETE TABLE property_photos;
+DELETE TABLE sold_photos;
+
+
+
